@@ -1,0 +1,86 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/colorPrimary">
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorSelected" >
+
+        <ImageButton
+            android:id="@+id/home_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#55"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:src="@drawable/home" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary" >
+
+        <ImageButton
+            android:id="@+id/camera_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#55"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:src="@drawable/camera" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary" >
+
+        <ImageButton
+            android:id="@+id/logs_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#55"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:src="@drawable/logs" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary" >
+
+        <ImageButton
+            android:id="@+id/user_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#55"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:src="@drawable/user" />
+
+    </FrameLayout>
+
+</LinearLayout>
