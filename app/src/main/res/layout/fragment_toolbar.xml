@@ -1,9 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/toolbar_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    android:baselineAligned="false">
 
     <FrameLayout
         android:layout_width="0dp"
@@ -16,10 +15,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="#55"
+            android:background="#00FFFFFF"
             android:clickable="true"
             android:focusable="true"
             android:scaleType="fitCenter"
+            android:contentDescription="@string/home"
             android:src="@drawable/home" />
 
     </FrameLayout>
@@ -35,10 +35,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="#55"
+            android:background="#00FFFFFF"
             android:clickable="true"
             android:focusable="true"
             android:scaleType="fitCenter"
+            android:contentDescription="@string/camera"
             android:src="@drawable/camera" />
 
     </FrameLayout>
@@ -54,10 +55,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="#55"
+            android:background="#00FFFFFF"
             android:clickable="true"
             android:focusable="true"
             android:scaleType="fitCenter"
+            android:contentDescription="@string/logs"
             android:src="@drawable/logs" />
 
     </FrameLayout>
@@ -73,10 +75,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="#55"
+            android:background="#00FFFFFF"
             android:clickable="true"
             android:focusable="true"
             android:scaleType="fitCenter"
+            android:contentDescription="@string/user"
             android:src="@drawable/user" />
 
     </FrameLayout>
