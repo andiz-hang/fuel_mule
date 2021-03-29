@@ -33,15 +33,23 @@
             android:id="@+id/username_textbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
+            android:autofillHints="@string/username"
             android:textAlignment="center"
-            android:text="@string/username"/>
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:hint="@string/username"/>
 
         <EditText
             android:id="@+id/password_textbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:autofillHints="@string/password"
             android:textAlignment="center"
-            android:text="@string/password"/>
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:hint="@string/password"/>
 
         <Button
             android:id="@+id/login_button"

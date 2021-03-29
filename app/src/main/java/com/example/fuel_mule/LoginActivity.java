@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -13,6 +14,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button mLoginButton;
     private EditText mUsernameField;
+//    private EditText mPasswordField; #NOT NEEDED FOR THE DEMO
     private String mUsername;
 //    private String mPassword; #NOT NEEDED FOR THE DEMO
 
@@ -23,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mUsernameField = findViewById(R.id.username_textbox);
         mUsernameField.addTextChangedListener(new TextWatcher() {
+
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -40,13 +43,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+//        mPasswordField = findViewById(R.id.password_textbox);
+
         mLoginButton = findViewById(R.id.login_button);
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = MainActivity.newIntent(LoginActivity.this, mUsername);
-                startActivity(intent);
+            Intent intent = MainActivity.newIntent(LoginActivity.this, mUsername);
+            startActivity(intent);
             }
         });
     }
