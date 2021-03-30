@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -13,7 +14,8 @@
         android:paddingEnd="10dp"
         android:paddingBottom="0dp"
         android:paddingTop="5dp"
-        android:text="Welcome gamerpro1337">
+        android:text="Welcome gamerpro1337"
+        tools:ignore="HardcodedText">
     </TextView>
 
     <TextView
@@ -26,7 +28,8 @@
         android:paddingBottom="5dp"
         android:paddingTop="0dp"
         android:textStyle="italic"
-        android:text="Current Subscription Level: Corporate">
+        android:text="Current Subscription Level: Corporate"
+        tools:ignore="HardcodedText">
     </TextView>
 
     <ListView
