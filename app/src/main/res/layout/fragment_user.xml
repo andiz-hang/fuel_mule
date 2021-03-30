@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/username_welcome"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="50sp"
-        android:text="User">
-
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="0dp"
+        android:paddingTop="5dp"
+        android:text="Welcome gamerpro1337">
     </TextView>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/subscription_level"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="0dp"
+        android:textStyle="italic"
+        android:text="Current Subscription Level: Corporate">
+    </TextView>
+
+    <ListView
+        android:id="@+id/settings_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+
+</LinearLayout>
