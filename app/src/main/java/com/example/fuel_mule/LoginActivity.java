@@ -13,9 +13,9 @@ import android.widget.EditText;
 public class LoginActivity extends AppCompatActivity {
 
     private Button mLoginButton;
-    private EditText mUsernameField;
+//    private EditText mUsernameField;
 //    private EditText mPasswordField; #NOT NEEDED FOR THE DEMO
-    private String mUsername;
+//    private String mUsername;
 //    private String mPassword; #NOT NEEDED FOR THE DEMO
 
     @Override
@@ -23,25 +23,25 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mUsernameField = findViewById(R.id.username_textbox);
-        mUsernameField.addTextChangedListener(new TextWatcher() {
-
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-              // This space intentionally left blank
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-              mUsername = s.toString();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-              // This one too
-            }
-        });
+//        mUsernameField = findViewById(R.id.username_textbox);
+//        mUsernameField.addTextChangedListener(new TextWatcher() {
+//
+//
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//              // This space intentionally left blank
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//              mUsername = s.toString();
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//              // This one too
+//            }
+//        });
 
 //        mPasswordField = findViewById(R.id.password_textbox);
 
@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent intent = MainActivity.newIntent(LoginActivity.this, mUsername);
+            Intent intent = MainActivity.newIntent(LoginActivity.this);
             startActivity(intent);
             }
         });
