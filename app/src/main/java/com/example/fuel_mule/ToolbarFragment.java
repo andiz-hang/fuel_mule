@@ -1,7 +1,9 @@
 package com.example.fuel_mule;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,17 @@ public class ToolbarFragment extends Fragment {
     private ImageButton mButtonCamera;
     private ImageButton mButtonLogs;
     private ImageButton mButtonUser;
+
+    private Callbacks mCallbacks;
+    public interface Callbacks {
+        void onMenuButtonSelected(String button);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mCallbacks = (Callbacks) context;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,7 +41,8 @@ public class ToolbarFragment extends Fragment {
         mButtonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Send data to change display to HOME
+                Log.d("TEST", "HOME");
+                mCallbacks.onMenuButtonSelected("h");
             }
         });
 
@@ -37,27 +51,37 @@ public class ToolbarFragment extends Fragment {
         mButtonCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Log.d("TEST", "CAMERA");
+                mCallbacks.onMenuButtonSelected("c");
             }
         });
 
-        //
+        // LOGS BUTTON
         mButtonLogs = v.findViewById(R.id.logs_button);
         mButtonLogs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Log.d("TEST", "LOGS");
+                mCallbacks.onMenuButtonSelected("l");
             }
         });
 
+        // USER BUTTON
         mButtonUser = v.findViewById(R.id.user_button);
         mButtonUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Log.d("TEST", "USER");
+                mCallbacks.onMenuButtonSelected("u");
             }
         });
 
         return v;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
     }
 }

@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements ToolbarFragment.Callbacks {
 
     private static final String EXTRA_USERNAME = "com.example.fuel_mule.username";
 
@@ -18,13 +20,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate (Bundle savedInstanceState) {
+        Log.d("Test", "MainActivity Created");
+
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
 
         FragmentManager fm = getSupportFragmentManager();
         Fragment display = fm.findFragmentById((R.id.display_container));
+
         if (display == null) {
             display = new DisplayFragment();
             fm.beginTransaction().add(R.id.display_container, display).commit();
@@ -35,5 +40,20 @@ public class MainActivity extends AppCompatActivity {
             toolbar = new ToolbarFragment();
             fm.beginTransaction().add(R.id.toolbar_container, toolbar).commit();
         }
+    }
+
+    @Override
+    // button must be: "h", "c", "l" or "u"
+    public void onMenuButtonSelected(String button) {
+
+        Log.d("Test", "Menu Button Selected: " + button);
+
+        Fragment display = new DisplayFragment();
+
+        Bundle args = new Bundle();
+        args.putString("buttonChar", button);
+        display.setArguments(args);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.display_container, display).commit();
     }
 }
