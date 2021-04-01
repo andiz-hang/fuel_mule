@@ -29,6 +29,11 @@ public class CameraFragment extends DisplayFragment {
         mCallbacks = (Callbacks) context;
     }
 
+    // Check if there is a photo imported
+    private boolean checkPhotoAdded() {
+        return true;
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -38,7 +43,7 @@ public class CameraFragment extends DisplayFragment {
         mButtonAnalyze.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCallbacks.onAnalyzeButtonSelected();
+                if (checkPhotoAdded()) mCallbacks.onAnalyzeButtonSelected();
             }
         });
 
