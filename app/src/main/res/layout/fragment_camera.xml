@@ -1,14 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="50dp"
-        android:text="Camera">
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        android:paddingTop="5dp"
+        android:text="@string/selected_photos"
+        android:layout_weight="0.5" />
 
-    </TextView>
+    <GridView
+        android:id="@+id/image_grid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:numColumns="2" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/analyze_button"
+        android:layout_width="match_parent"
+        android:text="@string/analyze"
+        android:background="@color/colorPrimary"
+        android:layout_margin="5dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/take_photo_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/take_photo"
+            android:background="@color/colorPrimary"
+            android:layout_margin="8dp"
+            tools:ignore="ButtonStyle,NestedWeights" />
+
+        <Button
+            android:id="@+id/import_photo_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/import_photo"
+            android:background="@color/colorPrimary"
+            android:layout_margin="8dp"
+            tools:ignore="ButtonStyle,NestedWeights" />
+
+    </LinearLayout>
+
+</LinearLayout>

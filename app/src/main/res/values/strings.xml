@@ -8,4 +8,8 @@
     <string name="camera">Camera</string>
     <string name="logs">Logs</string>
     <string name="user">User</string>
+    <string name="selected_photos">*Selected Photos*</string>
+    <string name="analyze">Analyze</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="import_photo">Import Photo</string>
 </resources>
