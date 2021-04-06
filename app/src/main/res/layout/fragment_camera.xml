@@ -15,12 +15,13 @@
         android:text="@string/selected_photos"
         android:layout_weight="0.5" />
 
-    <GridView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/image_grid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
-        android:numColumns="2" />
+        android:numColumns="2"
+        android:listSelector="@color/colorPrimary"/>
 
     <Button
         android:id="@+id/analyze_button"

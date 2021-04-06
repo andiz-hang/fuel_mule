@@ -16,4 +16,5 @@
     <string name="total_calories">Total: 600 Calories</string>
     <string name="save_meal">Save Meal</string>
     <string name="edit_meal">Edit Meal</string>
+    <string name="please_add_image">Please upload at least 1 image</string>
 </resources>
