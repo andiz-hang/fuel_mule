@@ -53,7 +53,7 @@ public class CameraFragment extends DisplayFragment {
     }
 
     private static class ImageHolder extends RecyclerView.ViewHolder {
-        private ImageView im;
+        private final ImageView im;
 
         public ImageHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.grid_item_image, parent, false));
@@ -64,11 +64,6 @@ public class CameraFragment extends DisplayFragment {
         public void bind(Bitmap bm) {
             im.setImageBitmap(bm);
         }
-
-//        private ImageHolder(View itemView) {
-//            super(itemView);
-//            im = itemView.findViewById(R.id.image_camera);
-//        }
     }
 
     private class ImageAdapter extends RecyclerView.Adapter<ImageHolder> {
@@ -78,8 +73,7 @@ public class CameraFragment extends DisplayFragment {
             mImages = bm;
         }
 
-        @NonNull
-        @Override
+        @NonNull @Override
         public ImageHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
 
@@ -103,12 +97,6 @@ public class CameraFragment extends DisplayFragment {
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mCallbacks = (Callbacks) context;
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(ResID, container, false);
@@ -122,8 +110,7 @@ public class CameraFragment extends DisplayFragment {
         mButtonAnalyze.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkPhotoAdded()) mCallbacks.onAnalyzeButtonSelected();
-                else Toast.makeText(getActivity(), R.string.please_add_image, Toast.LENGTH_LONG).show();
+                goToAnalysis();
             }
         });
 
@@ -170,57 +157,54 @@ public class CameraFragment extends DisplayFragment {
                 // Import Photo
                 case 1:
                     if (resultCode == RESULT_OK && data != null) {
-
-                        ClipData clipdata = data.getClipData();
-                        if (clipdata != null) {
-                            ArrayList<Bitmap> bitmaps = new ArrayList<>();
-                            for (int i=0; i<clipdata.getItemCount();i++) {
-                                try {
-                                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), clipdata.getItemAt(i).getUri());
-                                    bitmaps.add(bitmap);
-                                } catch (IOException e) {
-                                    // TODO Auto-generated catch block
-                                    e.printStackTrace();
-                                }
-                            }
-                            addImageToGrid(bitmaps);
-
-                        } else {
-
-                            Uri selectedImage = data.getData();
-                            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                            if (selectedImage != null) {
-                                Cursor cursor = getContext().getContentResolver().query(selectedImage,
-                                        filePathColumn, null, null, null);
-                                if (cursor != null) {
-                                    cursor.moveToFirst();
-
-                                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                                    String picturePath = cursor.getString(columnIndex);
-
-                                    //debug
-                                    Log.d("debug", PictureUtils.getScaledBitmap(picturePath, getActivity()).getClass().getName());
-                                    addImageToGrid(PictureUtils.getScaledBitmap(picturePath, getActivity()));
-                                    cursor.close();
-                                }
-                            }
-                        }
-                    }
-
-                    break;
+                        addImages(data);
+                    } break;
             }
         }
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mCallbacks = null;
+    private void goToAnalysis() {
+        if (mAdapter.getItemCount() > 0) mCallbacks.onAnalyzeButtonSelected();
+        else Toast.makeText(getActivity(), R.string.please_add_image, Toast.LENGTH_LONG).show();
     }
 
-    // Check if there is a photo imported
-    private boolean checkPhotoAdded() {
-        return mAdapter.getItemCount() > 0;
+    private void addImages(Intent data) {
+
+        ClipData clipdata = data.getClipData();
+        if (clipdata != null) {
+            ArrayList<Bitmap> bitmaps = new ArrayList<>();
+            for (int i=0; i<clipdata.getItemCount();i++) {
+                try {
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), clipdata.getItemAt(i).getUri());
+                    bitmaps.add(bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            addImageToGrid(bitmaps);
+        }
+
+        // TODO: Delete me
+//        else { addSingleImage(data); }
+    }
+
+    // TODO: Delete me
+    private void addSingleImage(Intent data) {
+        Uri selectedImage = data.getData();
+        String[] filePathColumn = {MediaStore.Images.Media.DATA};
+        if (selectedImage != null) {
+            Cursor cursor = getContext().getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            if (cursor != null) {
+                cursor.moveToFirst();
+
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                String picturePath = cursor.getString(columnIndex);
+
+                addImageToGrid(PictureUtils.getScaledBitmap(picturePath, getActivity()));
+                cursor.close();
+            }
+        }
     }
 
     private void addImageToGrid(Bitmap b) {
@@ -239,5 +223,17 @@ public class CameraFragment extends DisplayFragment {
 
         mAdapter = new ImageAdapter(bms);
         mImageGrid.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mCallbacks = (Callbacks) context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
     }
 }
