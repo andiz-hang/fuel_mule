@@ -9,7 +9,7 @@ import android.graphics.Point;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
-public class PictureUtils {
+public final class PictureUtils {
 
     public static Bitmap getScaledBitmap(String path, int destWidth, int destHeight) {
         // Read in the dimensions of the image on disk
