@@ -17,4 +17,22 @@
     <string name="save_meal">Save Meal</string>
     <string name="edit_meal">Edit Meal</string>
     <string name="please_add_image">Please upload at least 1 image</string>
+    <string name="calories">Calories</string>
+    <string name="sodium">Sodium</string>
+    <string name="fat">Fat</string>
+    <string name="carbs">Carbs</string>
+    <string name="protein">Protein</string>
+    <string name="cal_value">600</string>
+    <string name="sod_value">100mg</string>
+    <string name="fat_value">3g</string>
+    <string name="carbs_value">20g</string>
+    <string name="pro_value">5g</string>
+    <string-array name="ingredients">
+        <item>Tomatoes: 200g</item>
+        <item>Cheese: 100g</item>
+        <item>Mushrooms: 300g</item>
+        <item>Carrots: 400g</item>
+        <item>Onions: 400g</item>
+        <item>Potatoes: 100g</item>
+    </string-array>
 </resources>
