@@ -1,6 +1,7 @@
 package com.example.fuel_mule;
 
 import android.Manifest;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -26,6 +27,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -68,6 +70,7 @@ public class CameraFragment extends DisplayFragment {
 //            im = itemView.findViewById(R.id.image_camera);
 //        }
     }
+
     private class ImageAdapter extends RecyclerView.Adapter<ImageHolder> {
         private ArrayList<Bitmap> mImages;
 
@@ -94,10 +97,6 @@ public class CameraFragment extends DisplayFragment {
             return mImages.size();
         }
 
-        public void addBitmap(Bitmap b) {
-            mImages.add(b);
-        }
-
         public ArrayList<Bitmap> getList() {
             return mImages;
         }
@@ -115,7 +114,7 @@ public class CameraFragment extends DisplayFragment {
         View v = inflater.inflate(ResID, container, false);
 
         mImageGrid = v.findViewById(R.id.image_grid);
-        mImageGrid.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        mImageGrid.setLayoutManager(new GridLayoutManager(getContext(), 5));
         mAdapter = new ImageAdapter(new ArrayList<Bitmap>());
         mImageGrid.setAdapter(mAdapter);
 
@@ -148,6 +147,7 @@ public class CameraFragment extends DisplayFragment {
                 PictureUtils.checkPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE, 0);
 
                 Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                pickPhoto.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 startActivityForResult(pickPhoto, 1);
             }
         });
@@ -170,24 +170,44 @@ public class CameraFragment extends DisplayFragment {
                 // Import Photo
                 case 1:
                     if (resultCode == RESULT_OK && data != null) {
-                        Uri selectedImage =  data.getData();
-                        String[] filePathColumn = { MediaStore.Images.Media.DATA };
-                        if (selectedImage != null) {
-                            Cursor cursor = getContext().getContentResolver().query(selectedImage,
-                                    filePathColumn, null, null, null);
-                            if (cursor != null) {
-                                cursor.moveToFirst();
 
-                                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                                String picturePath = cursor.getString(columnIndex);
+                        ClipData clipdata = data.getClipData();
+                        if (clipdata != null) {
+                            ArrayList<Bitmap> bitmaps = new ArrayList<>();
+                            for (int i=0; i<clipdata.getItemCount();i++) {
+                                try {
+                                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), clipdata.getItemAt(i).getUri());
+                                    bitmaps.add(bitmap);
+                                } catch (IOException e) {
+                                    // TODO Auto-generated catch block
+                                    e.printStackTrace();
+                                }
+                            }
+                            addImageToGrid(bitmaps);
 
-                                //debug
-                                Log.d("debug", PictureUtils.getScaledBitmap(picturePath, getActivity()).getClass().getName());
-                                addImageToGrid(PictureUtils.getScaledBitmap(picturePath, getActivity()));
-                                cursor.close();
+                        } else {
+
+                            Uri selectedImage = data.getData();
+                            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                            if (selectedImage != null) {
+                                Cursor cursor = getContext().getContentResolver().query(selectedImage,
+                                        filePathColumn, null, null, null);
+                                if (cursor != null) {
+                                    cursor.moveToFirst();
+
+                                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                                    String picturePath = cursor.getString(columnIndex);
+
+                                    //debug
+                                    Log.d("debug", PictureUtils.getScaledBitmap(picturePath, getActivity()).getClass().getName());
+                                    addImageToGrid(PictureUtils.getScaledBitmap(picturePath, getActivity()));
+                                    cursor.close();
+                                }
                             }
                         }
-                    } break;
+                    }
+
+                    break;
             }
         }
     }
@@ -204,11 +224,18 @@ public class CameraFragment extends DisplayFragment {
     }
 
     private void addImageToGrid(Bitmap b) {
-        //debug
-        Log.d("debug", "2" + b.getClass().getName());
 
         ArrayList<Bitmap> bms = mAdapter.getList();
         bms.add(b);
+
+        mAdapter = new ImageAdapter(bms);
+        mImageGrid.setAdapter(mAdapter);
+    }
+
+    private void addImageToGrid(ArrayList<Bitmap> b) {
+
+        ArrayList<Bitmap> bms = mAdapter.getList();
+        bms.addAll(b);
 
         mAdapter = new ImageAdapter(bms);
         mImageGrid.setAdapter(mAdapter);
