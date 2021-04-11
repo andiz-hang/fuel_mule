@@ -3,7 +3,7 @@ package com.example.fuel_mule;
 import java.util.List;
 
 public class Meal {
-    private String mName;
+    private final String mName;
 
     private int mCalories;
     private int mSodium;
@@ -37,5 +37,9 @@ public class Meal {
         mFat += m.mFat;
         mCarbs += m.mCarbs;
         mProtein += m.mProtein;
+    }
+
+    public String getName() {
+        return mName;
     }
 }
