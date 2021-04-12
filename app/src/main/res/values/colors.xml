@@ -4,4 +4,10 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorSelected">#029C8A</color>
+
+    <color name="colorCal">#03085E</color>
+    <color name="colorSod">#1BD507</color>
+    <color name="colorFat">#C80303</color>
+    <color name="colorCarbs">#01BEC5</color>
+    <color name="colorPro">#5104E1</color>
 </resources>

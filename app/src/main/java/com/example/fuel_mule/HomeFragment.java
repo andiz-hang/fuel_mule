@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,8 +21,12 @@ import java.util.List;
 public class HomeFragment extends DisplayFragment {
     private static final @LayoutRes int ResID = R.layout.fragment_home;
 
+
+    // ------------------------  QUICKADD ------------------------
+
+
     private RecyclerView mQuickAddMenu;
-    private MealAdapter mAdapter;
+    private MealAdapter mMealAdapter;
 
 //    private class Quickadd
 
@@ -71,7 +76,6 @@ public class HomeFragment extends DisplayFragment {
         }
     }
 
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -88,8 +92,8 @@ public class HomeFragment extends DisplayFragment {
         QuickaddMeals qam = QuickaddMeals.get(getActivity());
         List<Meal> meals = qam.getMeals();
 
-        mAdapter = new MealAdapter(meals);
-        mQuickAddMenu.setAdapter(mAdapter);
+        mMealAdapter = new MealAdapter(meals);
+        mQuickAddMenu.setAdapter(mMealAdapter);
     }
 
 }

@@ -27,6 +27,8 @@
     <string name="fat_value">3g</string>
     <string name="carbs_value">20g</string>
     <string name="pro_value">5g</string>
+    <string name="quickadd">Quick-add</string>
+    <string name="daily_stats">Daily Stats</string>
     <string-array name="ingredients">
         <item>Tomatoes: 200g</item>
         <item>Cheese: 100g</item>

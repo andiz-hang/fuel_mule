@@ -1,5 +1,6 @@
 package com.example.fuel_mule;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Meal {
@@ -41,5 +42,33 @@ public class Meal {
 
     public String getName() {
         return mName;
+    }
+
+    public List<Integer> getStats() {
+        return Arrays.asList(mCalories, mSodium, mFat, mCarbs, mProtein);
+    }
+
+    public void setStat(int i, int value) {
+        if (i >= 5) {
+            return;
+        }
+
+        switch (i) {
+            case 0:
+                mCalories = value;
+                break;
+            case 1:
+                mSodium = value;
+                break;
+            case 2:
+                mFat = value;
+                break;
+            case 3:
+                mCarbs = value;
+                break;
+            case 4:
+                mProtein = value;
+                break;
+        }
     }
 }

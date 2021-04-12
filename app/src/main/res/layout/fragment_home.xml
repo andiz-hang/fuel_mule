@@ -1,28 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/home_stats"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:text="@string/daily_stats"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="GRAPHS AND STUFF"
-            android:textSize="50sp"/>
+            style="@style/StatBarText"
+            android:text="@string/calories"/>
 
-    </FrameLayout>
+        <ProgressBar
+            style="@style/StatBar"
+            android:progress="30"
+            android:progressTint="@color/colorCal"
+            tools:targetApi="lollipop"/>
+
+        <TextView
+            style="@style/StatBarText"
+            android:text="@string/sodium"/>
+
+        <ProgressBar
+            style="@style/StatBar"
+            android:progress="10"
+            android:progressTint="@color/colorSod"
+            tools:targetApi="lollipop"/>
+
+        <TextView
+            style="@style/StatBarText"
+            android:text="@string/fat"/>
+
+        <ProgressBar
+            style="@style/StatBar"
+            android:progress="50"
+            android:progressTint="@color/colorFat"
+            tools:targetApi="lollipop"/>
+
+        <TextView
+            style="@style/StatBarText"
+            android:text="@string/carbs"/>
+
+        <ProgressBar
+            style="@style/StatBar"
+            android:progress="80"
+            android:progressTint="@color/colorCarbs"
+            tools:targetApi="lollipop"/>
+
+        <TextView
+            style="@style/StatBarText"
+            android:text="@string/protein"/>
+
+        <ProgressBar
+            style="@style/StatBar"
+            android:progress="60"
+            android:progressTint="@color/colorPro"
+            tools:targetApi="lollipop" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/quickadd"
+        android:textSize="24sp"
+        android:textStyle="bold"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/quick_add"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
