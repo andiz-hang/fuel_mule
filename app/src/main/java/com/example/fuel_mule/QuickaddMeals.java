@@ -22,6 +22,8 @@ public class QuickaddMeals {
 
         // TODO: Testing
         mMeals.add(new Meal("The Best Meal"));
+        mMeals.add(new Meal("The Most Decent Meal"));
+        mMeals.add(new Meal("The Worst Meal"));
     }
 
     public List<Meal> getMeals() {
