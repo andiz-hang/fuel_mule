@@ -29,6 +29,10 @@
     <string name="pro_value">5g</string>
     <string name="quickadd">Quick-add</string>
     <string name="daily_stats">Daily Stats</string>
+    <string name="save_meal_dialog">Please enter a name for this meal.</string>
+    <string name="save_meal_dialog_edittext">Meal Name</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
     <string-array name="ingredients">
         <item>Tomatoes: 200g</item>
         <item>Cheese: 100g</item>
