@@ -22,7 +22,7 @@ public class QuickaddMeals {
         mMeals = new ArrayList<>();
 
         // TODO: Testing
-        mMeals.add(new Meal("The Best Meal", Arrays.asList(300, 100, 5, 5, 5)));
+        mMeals.add(new Meal("Turkey Sandwich", Arrays.asList(300, 100, 5, 5, 5)));
     }
 
     public List<Meal> getMeals() {
