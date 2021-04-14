@@ -19,6 +19,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/cal_text"
             style="@style/StatBarText"
             android:text="@string/calories"/>
 
@@ -30,6 +31,7 @@
             tools:targetApi="lollipop"/>
 
         <TextView
+            android:id="@+id/sod_text"
             style="@style/StatBarText"
             android:text="@string/sodium"/>
 
@@ -41,6 +43,7 @@
             tools:targetApi="lollipop"/>
 
         <TextView
+            android:id="@+id/fat_text"
             style="@style/StatBarText"
             android:text="@string/fat"/>
 
@@ -52,6 +55,7 @@
             tools:targetApi="lollipop"/>
 
         <TextView
+            android:id="@+id/carbs_text"
             style="@style/StatBarText"
             android:text="@string/carbs"/>
 
@@ -63,6 +67,7 @@
             tools:targetApi="lollipop"/>
 
         <TextView
+            android:id="@+id/pro_text"
             style="@style/StatBarText"
             android:text="@string/protein"/>
 

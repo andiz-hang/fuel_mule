@@ -25,6 +25,8 @@ import java.util.List;
 public class HomeFragment extends DisplayFragment {
     private static final @LayoutRes int ResID = R.layout.fragment_home;
 
+    private TextView mCalText, mSodText, mFatText, mCarbsText, mProText;
+
     private List<ProgressBar> mPBars;
     private static StatsToday mST;
 
@@ -53,7 +55,7 @@ public class HomeFragment extends DisplayFragment {
                 @Override
                 public void onClick(View v) {
                     mST.addStats(meal);
-                    updatePBars();
+                    updateStats();
                 }
             });
         }
@@ -98,6 +100,8 @@ public class HomeFragment extends DisplayFragment {
 
         initiatePBars(v);
 
+        initiateStatsText(v);
+
         mQuickAddMenu = v.findViewById(R.id.quick_add);
         mQuickAddMenu.setLayoutManager(new LinearLayoutManager(getContext()));
         updateQuickaddMenu();
@@ -117,6 +121,21 @@ public class HomeFragment extends DisplayFragment {
         updatePBars();
     }
 
+    private void initiateStatsText(View v) {
+        mCalText = v.findViewById(R.id.cal_text);
+        mSodText = v.findViewById(R.id.sod_text);
+        mFatText = v.findViewById(R.id.fat_text);
+        mCarbsText = v.findViewById(R.id.carbs_text);
+        mProText = v.findViewById(R.id.pro_text);
+
+        updateStatsText();
+    }
+
+    private void updateStats() {
+        updatePBars();
+        updateStatsText();
+    }
+
     @SuppressLint("NewApi")
     private void updatePBars() {
 
@@ -124,6 +143,23 @@ public class HomeFragment extends DisplayFragment {
             int progress = mST.getPercentages().get(i);
             mPBars.get(i).setProgress(progress, true);
         }
+    }
+
+    private void updateStatsText() {
+        List<Integer> values = mST.getStats().getStats();
+        List<Integer> limits = mST.getLimits();
+        String text;
+
+        text = "Calories - " + values.get(0).toString() + " / " + limits.get(0).toString();
+        mCalText.setText(text);
+        text = "Sodium - " + values.get(1).toString() + "mg / " + limits.get(1).toString() + "mg";
+        mSodText.setText(text);
+        text = "Fat - " + values.get(2).toString() + "g / " + limits.get(2).toString() + "g";
+        mFatText.setText(text);
+        text = "Carbs - " + values.get(3).toString() + "g / " + limits.get(3).toString() + "g";
+        mCarbsText.setText(text);
+        text = "Protein - " + values.get(4).toString() + "g / " + limits.get(4).toString() + "g";
+        mProText.setText(text);
     }
 
     private void updateQuickaddMenu() {

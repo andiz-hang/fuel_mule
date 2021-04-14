@@ -26,17 +26,17 @@ public class StatsToday {
         mLimits = Arrays.asList(2000, 500, 30, 30, 30);
         resetStats();
 
-        checkIfOverLimit();
+//        checkIfOverLimit();
     }
 
-    private void checkIfOverLimit() {
-
-        for (int i = 0; i < 5; i++) {
-            if (mStats.getStats().get(i) > mLimits.get(i)) {
-                mStats.setStat(i, mLimits.get(i));
-            }
-        }
-    }
+//    private void checkIfOverLimit() {
+//
+//        for (int i = 0; i < 5; i++) {
+//            if (mStats.getStats().get(i) > mLimits.get(i)) {
+//                mStats.setStat(i, mLimits.get(i));
+//            }
+//        }
+//    }
 
     private void calculatePercentages() {
 
@@ -44,13 +44,14 @@ public class StatsToday {
         List<Integer> stats = mStats.getStats();
 
         for (int i = 0; i < 5; i++) {
-            int res = stats.get(i) * 100 / mLimits.get(i);
+            int value = stats.get(i);
+            int limit = mLimits.get(i);
 
-            if (BuildConfig.DEBUG && !(res <= 100 && res >= 0)) {
-                throw new AssertionError("Stats Bar is more than 100 or less than 0");
+            if (value >= limit) out.set(i, 100);
+            else {
+                int res = value * 100 / limit;
+                out.set(i, res);
             }
-
-            out.set(i, res);
         }
 
         mPercentages = out;
@@ -72,7 +73,6 @@ public class StatsToday {
 
     public void addStats(Meal m) {
         mStats.add(m);
-        checkIfOverLimit();
         calculatePercentages();
     }
 
