@@ -3,6 +3,7 @@ package com.example.fuel_mule;
 import android.content.Context;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class QuickaddMeals {
@@ -21,9 +22,7 @@ public class QuickaddMeals {
         mMeals = new ArrayList<>();
 
         // TODO: Testing
-        mMeals.add(new Meal("The Best Meal"));
-        mMeals.add(new Meal("The Most Decent Meal"));
-        mMeals.add(new Meal("The Worst Meal"));
+        mMeals.add(new Meal("The Best Meal", Arrays.asList(300, 100, 5, 5, 5)));
     }
 
     public List<Meal> getMeals() {
