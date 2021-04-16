@@ -47,27 +47,6 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/logs_button_frame"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/colorPrimary">
-
-        <ImageButton
-            android:id="@+id/logs_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:background="#00FFFFFF"
-            android:clickable="true"
-            android:focusable="true"
-            android:scaleType="fitCenter"
-            android:contentDescription="@string/logs"
-            android:src="@drawable/logs" />
-
-    </FrameLayout>
-
-    <FrameLayout
         android:id="@+id/user_button_frame"
         android:layout_width="0dp"
         android:layout_height="match_parent"

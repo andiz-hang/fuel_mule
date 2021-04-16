@@ -21,7 +21,6 @@ public class ToolbarFragment extends Fragment {
 
     private FrameLayout mFrameButtonHome;
     private FrameLayout mFrameButtonCamera;
-    private FrameLayout mFrameButtonLogs;
     private FrameLayout mFrameButtonUser;
 
     private Callbacks mCallbacks;
@@ -56,7 +55,6 @@ public class ToolbarFragment extends Fragment {
 
         mFrameButtonHome = v.findViewById(R.id.home_button_frame);
         mFrameButtonCamera = v.findViewById(R.id.camera_button_frame);
-        mFrameButtonLogs = v.findViewById(R.id.logs_button_frame);
         mFrameButtonUser = v.findViewById(R.id.user_button_frame);
 
         // Default selected button is the HOME button
@@ -83,18 +81,6 @@ public class ToolbarFragment extends Fragment {
 
                 changeButtonColour(mFrameButtonCamera);
                 mCallbacks.onMenuButtonSelected("c");
-            }
-        });
-
-        // LOGS BUTTON
-        mButtonLogs = v.findViewById(R.id.logs_button);
-        mButtonLogs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("TEST", "LOGS");
-
-                changeButtonColour(mFrameButtonLogs);
-                mCallbacks.onMenuButtonSelected("l");
             }
         });
 

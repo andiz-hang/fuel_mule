@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity
                 return new CameraFragment();
             case "cr":
                 return new CameraResultsFragment();
-            case "l":
-                return new LogsFragment();
             case "u":
                 return new UserFragment();
             default:
