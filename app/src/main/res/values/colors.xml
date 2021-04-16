@@ -10,4 +10,6 @@
     <color name="colorFat">#C80303</color>
     <color name="colorCarbs">#01BEC5</color>
     <color name="colorPro">#5104E1</color>
+
+    <color name="red">#FF0000</color>
 </resources>

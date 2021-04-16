@@ -25,18 +25,32 @@
         android:textSize="14sp"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:paddingBottom="5dp"
+        android:paddingBottom="20dp"
         android:paddingTop="0dp"
         android:textStyle="italic"
-        android:text="Current Subscription Level: Regular"
-        tools:ignore="HardcodedText">
+        android:text="Current Subscription Level: Regular">
     </TextView>
 
-    <ListView
-        android:id="@+id/settings_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/change_sub_level_button"
+        style="@style/UserList"
+        android:text="Change Subscription Level" />
 
-    </ListView>
+    <Button
+        style="@style/UserList"
+        android:text="Change Username"/>
+
+    <Button
+        style="@style/UserList"
+        android:text="Change Password"/>
+
+    <Button
+        style="@style/UserList"
+        android:text="Display Settings"/>
+
+    <Button
+        style="@style/UserList"
+        android:textColor="@color/red"
+        android:text="Log Out"/>
 
 </LinearLayout>
