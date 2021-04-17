@@ -16,7 +16,6 @@ public class ToolbarFragment extends Fragment {
 
     private ImageButton mButtonHome;
     private ImageButton mButtonCamera;
-    private ImageButton mButtonLogs;
     private ImageButton mButtonUser;
 
     private FrameLayout mFrameButtonHome;
